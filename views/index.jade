@@ -1,0 +1,70 @@
+doctype
+html
+  head
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//getbootstrap.com/dist/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='//getbootstrap.com/examples/theme/theme.css')
+    link(rel='stylesheet', href='/index.css')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='/index.js')
+    title QueueMongo
+    meta(name='viewport', content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name='description', content='QueueMongo is a node.js client for a queue service built over MongoDB')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          .button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="/") QueueMongo
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown")
+                = "Queues"
+                b.caret
+              ul.dropdown-menu.queue-list
+                li.disabled
+                  a(href="#") None
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown")
+                = "Refresh Rate"
+                b.caret
+              ul.dropdown-menu.refresh
+                li
+                  a(href="#", data-refresh="now") Refresh Now
+                li.divider
+                li.dropdown-header Refresh Rate
+                li.active
+                  a(href="#", data-refresh=0) Static
+                li
+                  a(href="#", data-refresh=2) 2 seconds
+                li
+                  a(href="#", data-refresh=5) 5 seconds
+                li
+                  a(href="#", data-refresh=10) 10 seconds
+                li
+                  a(href="#", data-refresh=30) 30 seconds
+                li
+                  a(href="#", data-refresh=60) 60 seconds
+    .container.main(data-queue=queueName)
+      - var columnStyle = 'display: ' + (queueName ? 'block' : 'none')
+      - var overviewStyle = 'display: ' + (queueName ? 'block' : 'none')
+      .overview(style=overviewStyle)
+        
+      .column(style=columnStyle)
+        h3 Pending
+        .items.pending
+      .column(style=columnStyle)
+        h3 In-Progress
+        .items.in-progress
+      .column(style=columnStyle)
+        h3 Done
+        .items.done
+      .column(style=columnStyle)
+        h3 Failed
+        .items.failed
