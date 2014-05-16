@@ -25,6 +25,6 @@
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.9",
     "supertest": "^0.12.1",
-    "queuemongo": "^0.1.0"
+    "queuemongo": "^0.1.1"
   }
 }
